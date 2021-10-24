@@ -6,9 +6,12 @@ class TradeCoin
 
     //ID IDENTIFICATIVO DE LA MONEDA
     private string ID = string.Empty;
+    private bool SIMULADO = false;
 
-    public TradeCoin(string id)
+
+    public TradeCoin(string id, int diasHistorico,bool simulado = false)
     {
         this.ID = id;
+        this.SIMULADO = simulado;
     }
 }
