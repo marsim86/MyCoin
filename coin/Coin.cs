@@ -7,52 +7,56 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-abstract class Coin
+namespace coin
 {
-    protected string NAME = string.Empty;
-    protected string PARVALUE = string.Empty;
-    protected string URL_CHECK = string.Empty;
-    protected string TAG_PRICE = string.Empty;
-    private int MAX_VALUES = 1000;
-
-    //
-    private List<CoinValue> _values;
-    public List<CoinValue> allValues { get { return _values; } }
-
-    private Coin() {
-        _values = new List<CoinValue>();
-    }
-
-    public Coin(string name) :this()
+    abstract class Coin
     {
-        this.NAME = name;
-        //_values = new List<CoinValue>();
-    }
+        protected string NAME = string.Empty;
+        protected string PARVALUE = string.Empty;
+        protected string URL_CHECK = string.Empty;
+        protected string TAG_PRICE = string.Empty;
+        private int MAX_VALUES = 1000;
 
-    public CoinValue getValue()
-    {
+        //
+        private List<CoinValue> _values;
+        public List<CoinValue> allValues { get { return _values; } }
 
-        double res = 0.0;
-        try
+        private Coin()
         {
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, URL_CHECK + PARVALUE);
-
-            HttpResponseMessage response = new HttpClient().SendAsync(request).Result;
-            string msg = response.Content.ReadAsStringAsync().Result;
-            res = (double)Newtonsoft.Json.Linq.JObject.Parse(msg)[TAG_PRICE];
+            _values = new List<CoinValue>();
         }
-        catch (Exception ex)
+
+        public Coin(string name) : this()
         {
-            throw new Exception("Error recuperando valor '" + PARVALUE + "'", ex);
+            this.NAME = name;
+            //_values = new List<CoinValue>();
         }
-        _values.Add( new CoinValue(res));
-        if (_values.Count > MAX_VALUES) _values.RemoveAt(0);
-        analizaDatos();
-        return _values.Last();
+
+        public CoinValue getValue()
+        {
+
+            double res = 0.0;
+            try
+            {
+                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, URL_CHECK + PARVALUE);
+
+                HttpResponseMessage response = new HttpClient().SendAsync(request).Result;
+                string msg = response.Content.ReadAsStringAsync().Result;
+                res = (double)Newtonsoft.Json.Linq.JObject.Parse(msg)[TAG_PRICE];
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error recuperando valor '" + PARVALUE + "'", ex);
+            }
+            _values.Add(new CoinValue(res));
+            if (_values.Count > MAX_VALUES) _values.RemoveAt(0);
+            analizaDatos();
+            return _values.Last();
+        }
+
+        protected abstract void analizaDatos();
+
+        public void start() { }
+
     }
-
-
-    protected abstract void analizaDatos();
-
 }
-

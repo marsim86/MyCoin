@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PruebaTonta.clasess
+namespace coin
 {
     class CoinValue
     {
