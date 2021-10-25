@@ -18,10 +18,11 @@ public static class Util
         if (_root == null || _lastRoot.AddSeconds(5) < DateTime.Now)
             _root = (Root)Newtonsoft.Json.JsonConvert.DeserializeObject(File.ReadAllText(_pathRoot), typeof(Root));
         return _root;
-    }
+    } 
 
     public static bool appRunning(){
-        return "ON".Equals (getProperties().properties.status);
+        //return "ON".Equals (getProperties().properties.status);
+        return true;
     }
 
     public static string getValueFile(string file, string key)
@@ -67,6 +68,10 @@ public static class Util
         foreach (Object obj in myCollection)
             Console.Write("    {0}", obj);
         Console.WriteLine();
+    }
+
+    public static void waitToExactSecond(int iSecond){
+         while (DateTime.Now.Second % iSecond != 0) System.Threading.Thread.Sleep(100);
     }
 
 }
