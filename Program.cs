@@ -22,15 +22,12 @@ namespace PRUEBA3
                 Environment.Exit(-1);
             }
 
-            string status = string.Empty;
-
-            status = "ON";
-
-            while ("ON".Equals(status))
+            Console.WriteLine(pFile);
+            do
             {
-                System.Threading.Thread.Sleep(1000);
-                status = "OFF";
-            }
+                Console.WriteLine("llamada");
+                System.Threading.Thread.Sleep(1500);
+            } while ("ON".Equals(Util.getValueFile(pFile, "properties.status")));
 
         }
 
