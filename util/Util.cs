@@ -7,6 +7,23 @@ using Newtonsoft.Json.Linq;
 public static class Util
 {
 
+    private static string _pathRoot;
+    public static void pathRoot(string pr) { _pathRoot = pr;}
+    
+    private static Root _root;
+    private static DateTime _lastRoot = DateTime.MinValue;
+
+    public static Root getProperties()
+    {
+        if (_root == null || _lastRoot.AddSeconds(5) < DateTime.Now)
+            _root = (Root)Newtonsoft.Json.JsonConvert.DeserializeObject(File.ReadAllText(_pathRoot), typeof(Root));
+        return _root;
+    }
+
+    public static bool appRunning(){
+        return "ON".Equals (getProperties().properties.status);
+    }
+
     public static string getValueFile(string file, string key)
     {
         string res = string.Empty;

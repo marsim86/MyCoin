@@ -1,6 +1,6 @@
 {
 	"properties": {
-		"status": "ON",
+		"status": "OFF",
 		"frecuency": 5
 	},
 	"items": [
@@ -12,7 +12,8 @@
 			"wallet": 1,
 			"record": 1,
 			"trade": 0,
-			"simulate": 1
+			"simulate": 1,
+			"active" : 1
 		},
 		{
 			"coinid": "SHIB",
@@ -21,7 +22,8 @@
 			"previous_days": 7,
 			"wallet": 1,
 			"record": 1,
-			"trade": 0
+			"trade": 0,
+			"active" : 0
 		}
 	],
 	"wallets": [
