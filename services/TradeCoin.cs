@@ -14,4 +14,8 @@ class TradeCoin
         this.ID = id;
         this.SIMULADO = simulado;
     }
+
+    public void start(){
+        
+    }
 }

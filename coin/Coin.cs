@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -15,6 +16,8 @@ namespace coin
         protected string URL_CHECK = string.Empty;
         protected string TAG_PRICE = string.Empty;
         private int MAX_VALUES = 1000;
+
+        private bool saveToFile { get; set; } = true;
 
         //
         private List<CoinValue> _values;
@@ -47,12 +50,33 @@ namespace coin
             {
                 throw new Exception("Error recuperando valor '" + PARVALUE + "'", ex);
             }
-            _values.Add(new CoinValue(res));
-            if (_values.Count > MAX_VALUES) _values.RemoveAt(0);
+
+            procesaDato(new CoinValue(res));
+
+
             analizaDatos();
             return _values.Last();
         }
 
+        private void procesaDato(CoinValue cv)
+        {
+            _values.Add(cv);
+            if (_values.Count > MAX_VALUES) _values.RemoveAt(0);
+            if (saveToFile)
+            {
+                try
+                {
+                    using (StreamWriter writer = System.IO.File.AppendText(@"C:\_Marcos\Trading\Proyect\MyCoin\register\1INCH.20211027.mct"))
+                    {
+                        writer.WriteLine(cv);
+                    }
+                }
+                catch (Exception exp)
+                {
+                    Console.Write(exp.Message);
+                }
+            }
+        }
         protected abstract void analizaDatos();
 
         public void start() { }

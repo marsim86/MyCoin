@@ -28,10 +28,16 @@ namespace PRUEBA3
             Root r = (Root)Newtonsoft.Json.JsonConvert.DeserializeObject(strJson, typeof(Root));
             //aqui lee los ficheros a cargar
 
+            coin.Coin bc = new coin.BinanceCoin("1INCH");
+
+            for (int i = 0; i < 10; i++) {
+                bc.getValue();
+                System.Threading.Thread.Sleep (5000);
+            }
 
             //int segFrecuency = 5;
 
-            //Util.waitToExactSecond(segFrecuency);
+            //  
             //Console.WriteLine("oleeee");
 
 
@@ -41,7 +47,7 @@ namespace PRUEBA3
             //    Console.WriteLine("dt=" + dt.ToString("HH:mm:ss.fff"));
             //    System.Threading.Thread.Sleep(segFrecuency * 1000);
             //}
-            Environment.Exit (0);
+            Environment.Exit(0);
 
             //var obj = JObject.Parse(strJson);
             //var res = Newtonsoft.Json.JsonConvert<Root>(strJson);

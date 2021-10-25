@@ -20,7 +20,7 @@ namespace coin
 
         public override string ToString()
         {
-            return String.Format("{0:[yyyy-MM-dd HH:mm:ss]}{1:0.0000######}", _date, _value);
+            return String.Format("{0:[HH:mm:ss]}{1:0.0000######}", _date, _value);
         }
     }
 }
