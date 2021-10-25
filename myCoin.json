@@ -1,40 +1,34 @@
 {
-	"properties" :
-	{
-		"status" : "ON",
+	"properties": {
+		"status": "ON",
 		"frecuency": 5
 	},
-	
-	"items" :
-	[
-	{
-		"coinid" : "1INCH",
-		"par" : "1INCHUSDT"
-		"history" : "YES",
-		"previous_days": 7,
-		"wallet" : 1,
-		"record": 1,
-		"trade" : 0,
-		"simulate": 1
-	}
-	{
-		"coinid" : "SHIB",
-		"par" : "SHIBUSDT"
-		"history" : "YES",
-		"previous_days" : 7
-		"wallet" : 1,
-		"record": 01,
-		"trade" : 0
-	},
-	
-	"wallets":
-	[
-	{
-		"id" : 1
-		"coin" : "USTD"
-		"value" : 2000
-	}
+	"items": [
+		{
+			"coinid": "1INCH",
+			"par": "1INCHUSDT",
+			"history": "YES",
+			"previous_days": 7,
+			"wallet": 1,
+			"record": 1,
+			"trade": 0,
+			"simulate": 1
+		},
+		{
+			"coinid": "SHIB",
+			"par": "SHIBUSDT",
+			"history": "YES",
+			"previous_days": 7,
+			"wallet": 1,
+			"record": 1,
+			"trade": 0
+		}
+	],
+	"wallets": [
+		{
+			"id": 1,
+			"coin": "USTD",
+			"value": 2000
+		}
 	]
-
-]
 }
