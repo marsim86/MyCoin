@@ -6,7 +6,6 @@ using Newtonsoft.Json.Linq;
 
 public static class Util
 {
-
     private static string _pathRoot;
     public static void pathRoot(string pr) { _pathRoot = pr;}
     
