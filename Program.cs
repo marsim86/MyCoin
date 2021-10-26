@@ -28,7 +28,7 @@ namespace PRUEBA3
             Root r = (Root)Newtonsoft.Json.JsonConvert.DeserializeObject(strJson, typeof(Root));
             //aqui lee los ficheros a cargar
 
-            coin.Coin bc = new coin.BinanceCoin("1INCH");
+            Coins.Coin bc = new Coins.BinanceCoin("1INCH");
 
             for (int i = 0; i < 10; i++) {
                 bc.getValue();
